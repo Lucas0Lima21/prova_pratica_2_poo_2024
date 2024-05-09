@@ -2,17 +2,17 @@ package prova.model;
 
 public class Compra {
 	private int id;
-	private Produto produto;
 	private int quantidade;
+	private Produto produto;
 	
 	public Compra() {
 		
 	}
 	
-	public Compra(int id, Produto produto, int quantidade) {
+	public Compra(int id, int quantidade, Produto produto) {
 		this.id = id;
-		this.produto = produto;
 		this.quantidade = quantidade;
+		this.produto = produto;
 	}
 
 	public int getId() {

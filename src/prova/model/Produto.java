@@ -9,18 +9,19 @@ package prova.model;
 public class Produto {
 	private int id;
 	private String nome;
-	private Estoque estoque;
 	private double valor;
+	private int estoque;
+//	private Estoque estoque;
 	
 	public Produto() {
 		
 	}
 	
-	public Produto(int id, String nome, Estoque estoque, double valor) {
+	public Produto(int id, String nome, double valor, int estoque) {
 		this.id = id;
 		this.nome = nome;
-		this.estoque = estoque;
 		this.valor = valor;
+		this.estoque = estoque;
 	}
 	
 	public int getId() {
@@ -35,10 +36,10 @@ public class Produto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Estoque getEstoque() {
+	public int getEstoque() {
 		return estoque;
 	}
-	public void setEstoque(Estoque estoque) {
+	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
 	public double getValor() {

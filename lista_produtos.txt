@@ -1,0 +1,50 @@
+1, Banana,R$ 2,00,15
+2, Tomate,R$ 4,00,12
+3, Cebola,R$ 5,00,8
+4, Alface,R$ 6,00,5
+5, Pão,R$ 7,00,10
+6, Ovos,R$ 9,00,20
+7, Iogurte,R$ 10,00,10
+8, Frango,R$ 11,00,5
+9, Carne bovina,R$ 12,00,5
+10, Arroz,R$ 13,00,10
+11, Feijão,R$ 14,00,10
+12, Macarrão,R$ 15,00,15
+13, Café,R$ 16,00,10
+14, Maçã,R$ 1,50,10
+15, Açúcar,R$ 17,00,10
+16, Sal,R$ 18,00,5
+17, Óleo,R$ 19,00,10
+18, Laranja,R$ 3,00,20
+19, Farinha,R$ 20,00,10
+20, Leite em pó,R$ 21,00,10
+21, Presunto,R$ 22,00,5
+22, Queijo,R$ 23,00,5
+23, Iogurte natural,R$ 24,00,10
+24, Manteiga,R$ 25,00,5
+25, Geléia,R$ 26,00,10
+26, Ketchup,R$ 27,00,10
+27, Mostarda,R$ 28,00,10
+28, Maionese,R$ 29,00,10
+29, Vinagre,R$ 30,00,10
+30, Molho de tomate,R$ 31,00,10
+31, Arroz integral,R$ 32,00,10
+32, Aveia,R$ 33,00,10
+33, Granola,R$ 34,00,10
+34, Castanha do Pará,R$ 35,00,5
+35, Nozes,R$ 36,00,5
+36, Amêndoas,R$ 37,00,5
+37, Uvas passas,R$ 38,00,5
+38, Damasco seco,R$ 39,00,5
+39, Figo seco,R$ 40,00,5
+40, Mel,R$ 41,00,5
+41, Geleia real,R$ 42,00,5
+42, Própolis,R$ 43,00,5
+43, Chá verde,R$ 44,00,10
+44, Camomila,R$ 45,00,10
+45, Hortelã,R$ 46,00,5
+46, Salsa,R$ 47,00,5
+47, Leite,R$ 8,00,0
+48, Cebolinha,R$ 48,00,5
+49, Pimentão verde,R$ 49,00,5
+50, Brócolis,R$ 50,00,5
