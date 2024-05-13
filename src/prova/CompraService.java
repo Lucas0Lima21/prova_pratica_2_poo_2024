@@ -1,3 +1,4 @@
+
 package prova;
 
 import java.sql.Connection;
@@ -31,9 +32,9 @@ public class CompraService {
 			String sql = "update compra set id=?, quantidade=?, produto=? where id=?";
 			PreparedStatement pr = conn.prepareStatement(sql);
 			pr.setInt(1, c.getId());
-			pr.setInt(5, c.getId());
-			pr.setInt(4, c.getQuantidade());
-			pr.setInt(5, c.getId());
+			pr.setInt(2, c.getQuantidade());
+			pr.setInt(3, c.getProduto().getId());
+			pr.setInt(4, c.getId());
 			int total = pr.executeUpdate();
 			conn.close();
 			return total;
@@ -43,7 +44,7 @@ public class CompraService {
 		}
 	}
 	
-	public static int excluirproduto(Compra c) {
+	public static int excluirCompra(Compra c) {
 		try {
 			Connection conn = Conexao.conectaMySql();
 			String sql = "delete from compra where id=?";
@@ -79,7 +80,7 @@ public class CompraService {
 	public static ArrayList<Compra> listAll(){
 		ArrayList<Compra> lista = new ArrayList<Compra>();
 		try {
-			String sql = "select * from produto";
+			String sql = "select * from compra";
 			Connection conn = Conexao.conectaMySql();
 			PreparedStatement pr = conn.prepareStatement(sql);
 			ResultSet rs = pr.executeQuery();

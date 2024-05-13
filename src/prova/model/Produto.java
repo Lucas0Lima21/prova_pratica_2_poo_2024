@@ -24,6 +24,11 @@ public class Produto {
 		this.estoque = estoque;
 	}
 	
+	@Override
+	public String toString() {
+		return getNome();
+	}
+	
 	public int getId() {
 		return id;
 	}

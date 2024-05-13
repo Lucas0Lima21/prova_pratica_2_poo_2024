@@ -105,7 +105,7 @@ public class ProdutoService {
 	public static Produto findById(int id){
 		Produto p = new Produto();
 		try {
-			String sql = "select * from produto where id = ?";
+			String sql = "select * from produto";
 			Connection conn = Conexao.conectaMySql();
 			PreparedStatement pr = conn.prepareStatement(sql);
 			ResultSet rs = pr.executeQuery();

@@ -14,23 +14,38 @@ public class Compra {
 		this.quantidade = quantidade;
 		this.produto = produto;
 	}
-
+	
+	public boolean podeVender() {
+		return produto.getEstoque() >= quantidade;
+	}
+	public double subTotal() {
+		return produto.getValor() * quantidade;
+	}
+	
+	@Override
+	public String toString() {
+		return produto.getNome()+","+
+				quantidade +","+
+				produto.getValor()+","+
+				subTotal()+"\n";
+	}
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Produto getProduto() {
-		return produto;
-	}
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
 	public int getQuantidade() {
 		return quantidade;
 	}
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	public Produto getProduto() {
+		return produto;
+	}
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 }

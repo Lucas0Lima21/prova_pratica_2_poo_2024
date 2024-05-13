@@ -2,6 +2,8 @@ package prova.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -12,6 +14,7 @@ import prova.CompraService;
 import prova.LeitorLista;
 import prova.ProdutoService;
 import prova.BancoDeDados.Conexao;
+import prova.model.Compra;
 import prova.model.Produto;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -20,8 +23,8 @@ class LojaTest {
 	@BeforeAll
 	@Order(1)
 	static void inicializa() {
-		ProdutoService.limparTabelaProduto();
 		CompraService.limparTabelaCompra();
+		ProdutoService.limparTabelaProduto();
 	}
 	
 	@Test
@@ -32,77 +35,101 @@ class LojaTest {
 	
 	@Test
 	@Order(3)
-	void insereProdutotest() {
+	void insereProdutotest__Inexistente() {
 		Produto p1 = new Produto(0, "Mochila", 200.5, 10);
 		assertEquals(1, ProdutoService.insereProduto(p1));
 		Produto p2 = new Produto(2, "Oculos", 550.8, 15);
 		assertEquals(1, ProdutoService.insereProduto(p2));
+		Produto p3 = new Produto(3, "jogo", 100, 15);
+		assertEquals(1, ProdutoService.insereProduto(p3));
+		//Inexistente
+		Produto p4 = new Produto(1, "jogo", 50.8, 15);
+		assertEquals(-1, ProdutoService.insereProduto(p4));
 	}
 	@Test
 	@Order(4)
 	void alterarProdutotest() {
-		Produto p = new Produto(1, "Camisa", 200.5, 10);
-		assertEquals(1,ProdutoService.alteraProduto(p));
+		Produto p1 = new Produto(1, "Camisa", 200.5, 10);
+		assertEquals(1,ProdutoService.alteraProduto(p1));
 	}
+	
+//	@Test
+//	@Order(5)
+//	void alterarProdutoInexiste() {
+//		Produto p1 = new Produto(10, "Camisa", 200.5, 10);
+//		assertEquals(-1,ProdutoService.insereProduto(p1));
+//
+//	}
 	
 	@Test
 	@Order(5)
-	void alterarProdutoInexiste() {
-		Produto p = new Produto(25, "Camisa", 200.5, 10);
-		assertEquals(0,ProdutoService.alteraProduto(p));
-	}
-	private LeitorLista loja = new LeitorLista();
-
-	@Test
-	void carregaProdutoTest() {
-		loja.ListaProdutos();
-		
-		assertFalse(loja.getProdutos().size() == 0);
-		assertTrue(loja.getProdutos().size() == 50);
-		
-		loja.ListaCompra();
-		
-		assertFalse(loja.getCompras().size() == 0);
-		//assertTrue(loja.getCompras().size() == 20);
+	void excluirProdutotest() {
+		Produto p2 = new Produto(2, "Oculos", 550.8, 15);
+		assertEquals(1, ProdutoService.excluirproduto(p2));
 	}
 	
 //	@Test
-//	@Order(6)
-//	void excluirCidadetestnexiste() {
-//		Cidade c = new Cidade(1,"","");
-//		assertEquals(0,CidadeService.excluirCidade(c));
-//	}
-//	
-//	@Test
 //	@Order(7)
-//	void listaCidadeTest() {
-//		ArrayList<Cidade> lista = CidadeService.listall();
-//		for(Cidade c : lista) {
-//			System.out.println(c);
-//		}
+//	void excluirProdutoInexiste() {
+//		Produto p1 = new Produto(10, "Camisa", 200.5, 10);
+//		assertEquals(-1,ProdutoService.excluirproduto(p1));
 //	}
+	
+	@Test
+	@Order(7)
+	void listaProdutoTest() {
+		ArrayList<Produto> lista = ProdutoService.listAll();
+		for(Produto p : lista) {
+			System.out.println(p);
+		}
+	}
+
+	@Test
+	@Order(8)
+	void insereCompratest() {
+		Compra c1 = new Compra(0, 1, new Produto(1, "Camisa", 200.5, 10));
+		assertEquals(1, CompraService.insereCompra(c1));
+		Compra c2 = new Compra(2, 10, new Produto(3, "jogo", 100, 15));
+		assertEquals(1, CompraService.insereCompra(c2));
+
+	}
+
+	@Test
+	@Order(10)
+	void alterarCompra() {
+		Compra c1 = new Compra(1, 8, new Produto(1, "Camisa", 200.5, 10));
+		assertEquals(1, CompraService.alteraCompra(c1));
+		
+	}
+	@Test
+	@Order(11)
+	void ExcluirCompra() {
+		Compra c2 = new Compra(2, 10, new Produto(3, "jogo", 100, 15));
+		assertEquals(1, CompraService.excluirCompra(c2));
+		
+	}
+	@Test
+	@Order(12)
+	void listaCompraTest() {
+		ArrayList<Compra> lista = CompraService.listAll();
+		for(Compra c : lista) {
+			System.out.println(c);
+		}
+	}
+
+//	private LeitorLista loja = new LeitorLista();
 //	@Test
-//	@Order(8)
-//	void insereCliente() {
-//		Cliente c = new Cliente(0, "A", 11,"M",new Cidade(1,"Orleans","SC"));
-//		assertEquals(1, ClienteService.insereCliente(c));
+//	void carregaProdutoTest() {
+//		loja.ListaProdutos();
 //		
-//	}
-//	@Test
-//	@Order(9)
-//	void alterarCliente() {
-//		Cliente c = new Cliente(1, "A", 11,"M",new Cidade(1,"Sao Paulo","SC"));
-//		assertEquals(1, ClienteService.alteraCliente(c));
+//		assertFalse(loja.getProdutos().size() == 0);
+//		assertTrue(loja.getProdutos().size() == 50);
 //		
-//	}
-//	@Test
-//	@Order(10)
-//	void listaClienteTest() {
-//		ArrayList<Cliente> lista = ClienteService.listall();
-//		for(Cliente c : lista) {
-//			System.out.println(c);
-//		}
+//		loja.ListaCompra();
+//		
+////		assertFalse(loja.getCompras().size() == 0);
+////		assertTrue(loja.getCompras().size() == 20);
+//		loja.processarCompra();
 //	}
 
 }
-

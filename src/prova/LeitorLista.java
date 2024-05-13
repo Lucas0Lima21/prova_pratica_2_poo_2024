@@ -37,11 +37,11 @@ public class LeitorLista {
 		try {
 			FileWriter fw = new FileWriter("compra.txt");
 			BufferedWriter bw = new BufferedWriter(fw);
-//			for (Estoque estoquee : estoque) {
-//				if(estoque.podeVender()) {
-//					bw.append(estoque.toString());
-//				}
-//			}
+			for (Compra compra : compras) {
+				if(compra.podeVender()) {
+					bw.append(compras.toString());
+				}
+			}
 			bw.close();
 			fw.close();
 		} catch (Exception e) {
@@ -79,9 +79,9 @@ public class LeitorLista {
 			String linha = "";
 			while((linha = br.readLine())!=null) {
 				String parts[] = linha.split(",");
-				int id = Integer.parseInt(parts[0]);
+				Produto p = buscaProduto(Integer.parseInt(parts[2]));
 				int quantidade = Integer.parseInt(parts[1]);
-				Produto p = buscaProduto(parts[2]);
+				int id = Integer.parseInt(parts[0]);
 				compras.add(new Compra(id, quantidade, p));
 				CompraService.insereCompra(new Compra(id, quantidade, p));
 
@@ -92,29 +92,10 @@ public class LeitorLista {
 			e.printStackTrace();
 		}
 	}
-//	public void ListaEstoque() {
-//		try {
-//			FileReader fr = new FileReader("lista_estoque.txt");
-//			BufferedReader br = new BufferedReader(fr);
-//			String linha = "";
-//			while((linha = br.readLine())!=null) {
-//				String parts[] = linha.split(",");
-//				int id = Integer.parseInt(parts[0]);
-//				Produto p = buscaProduto(parts[1]);
-//				if(p != null) {
-//					compra.add(new Compra(id, p, Integer.parseInt(parts[2])));
-//				}
-//			}
-//			br.close();
-//			fr.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
-	private Produto buscaProduto(String nome) {
+
+	private Produto buscaProduto(int id) {
 		for (Produto p : produtos) {
-			if(p.getNome().equals(nome)) {
+			if(p.getId()==id) {
 				return p;
 			}
 		}

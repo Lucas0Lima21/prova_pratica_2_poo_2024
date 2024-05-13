@@ -1,4 +1,4 @@
-1, Banana,R$ 2,00,15
+0, Banana,R$ 2,00,15
 2, Tomate,R$ 4,00,12
 3, Cebola,R$ 5,00,8
 4, Alface,R$ 6,00,5
