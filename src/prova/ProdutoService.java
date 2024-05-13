@@ -102,6 +102,8 @@ public class ProdutoService {
 		}
 		return lista;
 	}
+	
+	
 	public static Produto findById(int id){
 		Produto p = new Produto();
 		try {

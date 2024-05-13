@@ -79,9 +79,9 @@ public class LeitorLista {
 			String linha = "";
 			while((linha = br.readLine())!=null) {
 				String parts[] = linha.split(",");
-				Produto p = buscaProduto(Integer.parseInt(parts[2]));
-				int quantidade = Integer.parseInt(parts[1]);
 				int id = Integer.parseInt(parts[0]);
+				int quantidade = Integer.parseInt(parts[1]);
+				Produto p = buscaProduto(Integer.parseInt(parts[2]));
 				compras.add(new Compra(id, quantidade, p));
 				CompraService.insereCompra(new Compra(id, quantidade, p));
 

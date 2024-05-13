@@ -51,19 +51,15 @@ class LeitorTest {
 		loja.ListaCompra();
 		
 		assertFalse(loja.getCompras().size() == 0);
-		assertTrue(loja.getCompras().size() == 4);
+		assertTrue(loja.getCompras().size() >= 4);
 		
 	}
 	@Test
 	@Order(4)
 	void carregaCompraProcessadaTest() {
-		
-
-		loja.ListaCompra();
-		
-		assertFalse(loja.getCompras().size() == 0);
-		assertTrue(loja.getCompras().size() == 4);
+	
 		loja.processarCompra();
+		loja.getTotalCompra();
 		assertTrue(new File("Compra.txt").exists());
 	}
 

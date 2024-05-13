@@ -1,7 +1,10 @@
 package prova.test;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -53,30 +56,16 @@ class LojaTest {
 		assertEquals(1,ProdutoService.alteraProduto(p1));
 	}
 	
-//	@Test
-//	@Order(5)
-//	void alterarProdutoInexiste() {
-//		Produto p1 = new Produto(10, "Camisa", 200.5, 10);
-//		assertEquals(-1,ProdutoService.insereProduto(p1));
-//
-//	}
-	
 	@Test
 	@Order(5)
 	void excluirProdutotest() {
 		Produto p2 = new Produto(2, "Oculos", 550.8, 15);
 		assertEquals(1, ProdutoService.excluirproduto(p2));
 	}
-	
-//	@Test
-//	@Order(7)
-//	void excluirProdutoInexiste() {
-//		Produto p1 = new Produto(10, "Camisa", 200.5, 10);
-//		assertEquals(-1,ProdutoService.excluirproduto(p1));
-//	}
+
 	
 	@Test
-	@Order(7)
+	@Order(6)
 	void listaProdutoTest() {
 		ArrayList<Produto> lista = ProdutoService.listAll();
 		for(Produto p : lista) {
@@ -85,9 +74,10 @@ class LojaTest {
 	}
 
 	@Test
-	@Order(8)
+	@Order(7)
 	void insereCompratest() {
-		Compra c1 = new Compra(0, 1, new Produto(1, "Camisa", 200.5, 10));
+		Produto p1 = new Produto(1, "Camisa", 200.5, 10);
+		Compra c1 = new Compra(0, 1, p1);
 		assertEquals(1, CompraService.insereCompra(c1));
 		Compra c2 = new Compra(2, 10, new Produto(3, "jogo", 100, 15));
 		assertEquals(1, CompraService.insereCompra(c2));
@@ -95,41 +85,54 @@ class LojaTest {
 	}
 
 	@Test
-	@Order(10)
+	@Order(8)
 	void alterarCompra() {
 		Compra c1 = new Compra(1, 8, new Produto(1, "Camisa", 200.5, 10));
 		assertEquals(1, CompraService.alteraCompra(c1));
 		
 	}
 	@Test
-	@Order(11)
+	@Order(9)
 	void ExcluirCompra() {
 		Compra c2 = new Compra(2, 10, new Produto(3, "jogo", 100, 15));
 		assertEquals(1, CompraService.excluirCompra(c2));
 		
 	}
 	@Test
-	@Order(12)
+	@Order(10)
 	void listaCompraTest() {
 		ArrayList<Compra> lista = CompraService.listAll();
 		for(Compra c : lista) {
 			System.out.println(c);
 		}
 	}
-
-//	private LeitorLista loja = new LeitorLista();
+	private LeitorLista loja = new LeitorLista();
+	@Test
+	@Order(11)
+	void carregaProdutoTest() {
+		loja.ListaProdutos();
+		
+		assertFalse(loja.getProdutos().size() == 0);
+		assertTrue(loja.getProdutos().size() == 50);
+	}
 //	@Test
-//	void carregaProdutoTest() {
-//		loja.ListaProdutos();
+//	@Order(14)
+//	void carregaCompraTest() {
 //		
-//		assertFalse(loja.getProdutos().size() == 0);
-//		assertTrue(loja.getProdutos().size() == 50);
-//		
+//
 //		loja.ListaCompra();
 //		
-////		assertFalse(loja.getCompras().size() == 0);
-////		assertTrue(loja.getCompras().size() == 20);
+//		assertFalse(loja.getCompras().size() == 0);
+//		assertTrue(loja.getCompras().size() >= 4);
+//		
+//	}
+//	@Test
+//	@Order(15)
+//	void carregaCompraProcessadaTest() {
+//	
 //		loja.processarCompra();
+//		loja.getTotalCompra();
+//		assertTrue(new File("Compra.txt").exists());
 //	}
 
 }
