@@ -1,17 +1,11 @@
 package prova.model;
 
-/*- Prova
-    - Ler arquivo de produto, compra ou estoque.
-    - Gravar a tabela no banco de dados.
-    - Ler o banco de dados
-    - Gravar no arquivo.
-    - Tudo coberto no teste.*/
 public class Produto {
 	private int id;
 	private String nome;
 	private double valor;
 	private int estoque;
-//	private Estoque estoque;
+
 	
 	public Produto() {
 		
@@ -24,9 +18,15 @@ public class Produto {
 		this.estoque = estoque;
 	}
 	
+	public double subTotal() {
+		return getValor() * estoque;
+	}
+	
 	@Override
 	public String toString() {
-		return getNome();
+		return getNome()+","+
+				getEstoque()+","+
+				subTotal()+"\n";
 	}
 	
 	public int getId() {

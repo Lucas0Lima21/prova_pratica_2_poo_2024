@@ -1,5 +1,7 @@
 package prova;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -93,7 +95,6 @@ public class ProdutoService {
 				p.setNome(rs.getString("nome"));
 				p.setValor(rs.getDouble("valor"));
 				p.setEstoque(rs.getInt("estoque"));
-				//p.setCidade(CidadeService.findById(rs.getInt("cidade")));
 				lista.add(p);
 			}
 			conn.close();
@@ -103,25 +104,28 @@ public class ProdutoService {
 		return lista;
 	}
 	
-	
-	public static Produto findById(int id){
-		Produto p = new Produto();
-		try {
-			String sql = "select * from produto";
-			Connection conn = Conexao.conectaMySql();
-			PreparedStatement pr = conn.prepareStatement(sql);
-			ResultSet rs = pr.executeQuery();
-			while(rs.next()) {
-				p.setId(rs.getInt("id"));
-				p.setNome(rs.getString("nome"));
-				p.setValor(rs.getDouble("valor"));
-				p.setEstoque(rs.getInt("estoque"));
-			}
-			conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return p;
-	}
+    public static void gerarArquivoTxt() {
+        try {
+            String sql = "SELECT * FROM produto";
+            Connection conn = Conexao.conectaMySql();
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
 
+            BufferedWriter writer = new BufferedWriter(new FileWriter("produtos.txt"));
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                double valor = rs.getDouble("valor");
+                int estoque = rs.getInt("estoque");
+
+                
+                writer.write(id + ","+ estoque + ",R$ " + (valor * estoque) );
+                writer.newLine(); 
+            }
+            writer.close(); 
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
